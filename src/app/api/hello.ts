@@ -1,14 +1,12 @@
 import { Hono } from 'hono'
 
-const app = new Hono()
+const app = new Hono().basePath('/api')
 
-// Use absolute path that works on all platforms
-app.get('/api/hello', (c) => {
+app.all('/hello', (c) => {
   return c.json({
-    message: 'welcome to bini.js',
-    typescript: true,
+    message  : 'Hello from Bini.js!',
     timestamp: new Date().toISOString(),
-    platform: c.req.url
+    method   : c.req.method,
   })
 })
 
