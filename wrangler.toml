@@ -1,6 +1,8 @@
-name = "testing-cloudflare"  # Changed from "my-app"
+name = "testing-cloudflare"
 main = "worker.ts"
-compatibility_date = "2024-01-01"
+compatibility_date = "2025-04-09"
 
 [assets]
 directory = "./dist"
+binding = "ASSETS"
+not_found_handling = "index.html"
