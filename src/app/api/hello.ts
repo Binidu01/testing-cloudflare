@@ -1,6 +1,6 @@
 import { Hono } from 'hono'
 
-const app = new Hono()
+const app = new Hono().basePath('/api')
 
 app.all('/hello', (c) => {
   return c.json({
