@@ -18,9 +18,9 @@
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",
     "hono": "^4.12.9",
-    "bini-router": "^1.0.32",
+    "bini-router": "^1.0.33",
     "bini-overlay": "^1.0.5",
-    "bini-server": "^1.0.2"
+    "bini-server": "^1.0.3"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^6.0.1",
