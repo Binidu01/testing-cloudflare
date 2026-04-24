@@ -4,36 +4,36 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite --host --open",
-    "build": "vite build",
+    "build": "tsc --noEmit && vite build",
     "export": "vite build --mode export",
     "start": "bini-server",
     "preview": "vite preview --host --open",
     "type-check": "tsc --noEmit",
-    "lint": "oxlint --plugin react --plugin react-hooks src",
+    "lint": "oxlint src",
     "format": "oxfmt src",
-    "check": "oxlint --plugin react --plugin react-hooks src && oxfmt --check src"
+    "check": "oxlint src && oxfmt src && tsc --noEmit"
   },
   "dependencies": {
-    "react": "^19.2.4",
-    "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1",
-    "hono": "^4.12.9",
-    "bini-router": "^1.0.37",
-    "bini-overlay": "^1.0.5",
-    "bini-server": "^1.0.3"
+    "bini-overlay": "latest",
+    "bini-router": "latest",
+    "bini-server": "latest",
+    "hono": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest"
   },
   "devDependencies": {
-    "@vitejs/plugin-react": "^6.0.1",
-    "vite": "^8.0.3",
-    "oxlint": "latest",
+    "@tailwindcss/vite": "latest",
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@vitejs/plugin-react": "latest",
+    "bini-env": "latest",
+    "bini-export": "latest",
     "oxfmt": "latest",
-    "bini-env": "^1.0.8",
-    "bini-export": "^1.0.1",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@types/node": "^25.4.0",
-    "typescript": "^5.9.3",
-    "tailwindcss": "^4.2.1",
-    "@tailwindcss/vite": "^4.2.1"
+    "oxlint": "latest",
+    "tailwindcss": "latest",
+    "typescript": "latest",
+    "vite": "latest"
   }
 }
