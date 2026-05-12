@@ -16,7 +16,7 @@
   "dependencies": {
     "bini-overlay": "latest",
     "bini-router": "latest",
-    "bini-server": "latest",
+    "bini-server": "1.0.8",
     "hono": "latest",
     "react": "latest",
     "react-dom": "latest",
@@ -28,7 +28,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "bini-env": "latest",
+    "bini-env": "1.1.1",
     "bini-export": "latest",
     "oxfmt": "latest",
     "oxlint": "latest",
