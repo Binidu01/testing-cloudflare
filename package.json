@@ -21,7 +21,7 @@
     "hono": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "react-router-dom": "latest"
+    "react-router-dom": "^7.11.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "latest",
@@ -29,7 +29,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "bini-deploy": "link:..\\..\\bini-deploy",
+    "bini-deploy": "latest",
     "bini-env": "latest",
     "bini-export": "latest",
     "oxfmt": "latest",
