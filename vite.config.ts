@@ -6,39 +6,28 @@ import { biniEnv } from 'bini-env';
 import { biniExport } from 'bini-export';
 import tailwindcss from '@tailwindcss/vite';
 
-import { existsSync } from 'node:fs';
-
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
   const isBuild = command === 'build';
   const port = parseInt(env['PORT'] ?? '3000', 10);
 
-  const isTauri = env['TAURI'] === 'true' ||
-                  process.env.TAURI === 'true' ||
-                  existsSync('./src-tauri');
+  // Tauri detection via environment variable (set by cross-env in package.json)
+  const isTauri = env['TAURI'] === 'true' || process.env.TAURI === 'true';
+  const isCodespace = !!env['CODESPACE_NAME'];
 
-  const tauriDevHost = process.env.TAURI_DEV_HOST;
-
-  const host = tauriDevHost
-    ? true
-    : isTauri
+  const host = isTauri
+    ? '0.0.0.0'
+    : isCodespace
       ? '0.0.0.0'
-      : (env['CODESPACE_NAME'] ? '0.0.0.0' : 'localhost');
+      : 'localhost';
 
-  const hmrConfig = env['CODESPACE_NAME']
+  const hmrConfig = isCodespace
     ? { clientPort: 443, overlay: false }
-    : tauriDevHost
-      ? {
-          overlay: false,
-          protocol: 'ws',
-          host: tauriDevHost,
-          port,
-        }
-      : {
-          overlay: false,
-          host: 'localhost',
-          protocol: 'ws',
-        };
+    : {
+        overlay: false,
+        host: 'localhost',
+        protocol: 'ws',
+      };
 
   return {
     plugins: [
@@ -62,10 +51,17 @@ export default defineConfig(({ command, mode }) => {
       },
       hmr: hmrConfig,
       watch: {
-        usePolling: !!env['CODESPACE_NAME'] || isTauri,
+        usePolling: isCodespace || isTauri,
         ignored: [
           '**/dist/**',
-          '**/node_modules/**'
+          '**/node_modules/**',
+          ...(isTauri ? [
+            '**/src-tauri/**',
+            '**/target/**',
+            '**/*.exe',
+            '**/*.dll',
+            '**/*.pdb',
+          ] : []),
         ],
       },
       strictPort: true,
@@ -75,7 +71,7 @@ export default defineConfig(({ command, mode }) => {
       port,
       host: '0.0.0.0',
       open: true,
-      cors: true
+      cors: true,
     },
 
     build: {
@@ -93,8 +89,12 @@ export default defineConfig(({ command, mode }) => {
           assetFileNames: (assetInfo) => {
             const name = assetInfo.names?.[0] ?? assetInfo.name ?? '';
             const ext = name.split('.').pop() ?? '';
-            if (/png|jpe?g|gif|svg|webp|avif/.test(ext)) return 'assets/images/[name]-[hash][extname]';
-            if (/woff2?|eot|ttf|otf/.test(ext)) return 'assets/fonts/[name]-[hash][extname]';
+            if (/png|jpe?g|gif|svg|webp|avif/.test(ext)) {
+              return 'assets/images/[name]-[hash][extname]';
+            }
+            if (/woff2?|eot|ttf|otf/.test(ext)) {
+              return 'assets/fonts/[name]-[hash][extname]';
+            }
             if (ext === 'css') return 'css/[name]-[hash][extname]';
             if (ext === 'json') return 'data/[name]-[hash][extname]';
             return 'assets/[name]-[hash][extname]';
@@ -103,14 +103,17 @@ export default defineConfig(({ command, mode }) => {
       },
     },
 
-    resolve: { alias: { '@': '/src' } },
+    resolve: {
+      alias: { '@': '/src' },
+    },
+
     css: {
       modules: { localsConvention: 'camelCase' },
-      devSourcemap: true
+      devSourcemap: true,
     },
+
     optimizeDeps: {
-      include: ['react', 'react-dom', 'react-router-dom']
+      include: ['react', 'react-dom', 'react-router-dom'],
     },
-    types: ["vite/client"]
   };
 });
