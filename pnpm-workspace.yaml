@@ -1,3 +1,0 @@
-minimumReleaseAgeExclude:
-  - bini-deploy@1.0.12
-  - chalk@6.0.0
