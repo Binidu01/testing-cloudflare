@@ -5,7 +5,6 @@ import { biniOverlay } from 'bini-overlay';
 import { biniEnv } from 'bini-env';
 import { biniExport } from 'bini-export';
 import tailwindcss from '@tailwindcss/vite';
-import { biniDeploy } from 'bini-deploy';
 
 import { existsSync } from 'fs';
 
@@ -49,7 +48,6 @@ export default defineConfig(({ command, mode }) => {
       biniOverlay(),
       biniEnv(),
       biniExport(),
-      biniDeploy(),
     ],
 
     server: {

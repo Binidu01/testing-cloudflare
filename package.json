@@ -29,7 +29,7 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "bini-deploy": "latest",
+    "bini-deploy": "link:C:/Users/rbini/OneDrive/Desktop/bini-deploy",
     "bini-env": "latest",
     "bini-export": "latest",
     "oxfmt": "latest",
