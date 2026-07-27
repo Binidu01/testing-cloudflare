@@ -15,6 +15,7 @@
     "check": "oxlint src && oxfmt src && tsc --noEmit"
   },
   "dependencies": {
+    "bini-deploy": "^1.0.12",
     "bini-overlay": "latest",
     "bini-router": "latest",
     "bini-server": "latest",
@@ -29,7 +30,6 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "bini-deploy": "link:C:/Users/rbini/OneDrive/Desktop/bini-deploy",
     "bini-env": "latest",
     "bini-export": "latest",
     "oxfmt": "latest",
