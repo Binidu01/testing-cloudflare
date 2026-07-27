@@ -6,7 +6,7 @@ import { biniEnv } from 'bini-env';
 import { biniExport } from 'bini-export';
 import tailwindcss from '@tailwindcss/vite';
 
-import { existsSync } from 'fs';
+import { existsSync } from 'node:fs';
 
 export default defineConfig(({ command, mode }) => {
   const env = loadEnv(mode, process.cwd(), '');
