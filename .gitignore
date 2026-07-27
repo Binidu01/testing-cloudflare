@@ -6,5 +6,3 @@ dist/
 .DS_Store
 Thumbs.db
 *.log
-
-netlify/edge-functions/api.ts
