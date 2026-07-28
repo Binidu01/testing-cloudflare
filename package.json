@@ -35,7 +35,7 @@
     "oxfmt": "latest",
     "oxlint": "latest",
     "tailwindcss": "latest",
-    "typescript": "latest",
+    "typescript": "^6.0.0",
     "vite": "latest"
   }
 }
