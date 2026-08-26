@@ -32,12 +32,12 @@
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "@vitejs/plugin-react": "latest",
-    "bini-deploy": "link:C:/Users/rbini/OneDrive/Desktop/bini-deploy",
+    "bini-deploy": "1.0.17",
     "bini-env": "latest",
     "oxfmt": "latest",
     "oxlint": "latest",
     "tailwindcss": "latest",
-    "typescript": "^6.0.0",
+    "typescript": "latest",
     "vite": "latest"
   }
 }
