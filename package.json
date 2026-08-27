@@ -1,0 +1,40 @@
+{
+  "name": "my-bini-app",
+  "type": "module",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite --host --open",
+    "build": "tsc --noEmit && vite build",
+    "start": "bini-server",
+    "preview": "vite preview --host --open",
+    "deploy": "bini-deploy",
+    "type-check": "tsc --noEmit",
+    "lint": "oxlint src",
+    "format": "oxfmt src",
+    "check": "oxlint src && oxfmt src && tsc --noEmit"
+  },
+  "dependencies": {
+    "react": "latest",
+    "react-dom": "latest",
+    "react-router-dom": "latest",
+    "hono": "latest",
+    "bini-router": "latest",
+    "bini-overlay": "latest",
+    "bini-server": "latest",
+    "bini-ssg": "latest"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "latest",
+    "vite": "latest",
+    "oxlint": "latest",
+    "oxfmt": "latest",
+    "bini-env": "latest",
+    "bini-deploy": "1.0.18",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "@types/node": "latest",
+    "typescript": "latest",
+    "tailwindcss": "latest",
+    "@tailwindcss/vite": "latest"
+  }
+}
