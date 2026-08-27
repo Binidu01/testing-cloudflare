@@ -6,7 +6,6 @@ node_modules/
 
 # Lock files (keep one, ignore others)
 package-lock.json
-pnpm-lock.yaml
 yarn.lock
 bun.lock
 bun.lockb
