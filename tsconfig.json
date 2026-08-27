@@ -16,9 +16,12 @@
       "@/*": ["./src/*"]
     },
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": ["./node_modules/@types"],
-    "types": ["node"]
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules"
+    ],
+    "types": ["vite/client", "node"]
   },
-  "include": ["src", "api"],
+  "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }
