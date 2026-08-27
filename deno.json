@@ -1,4 +1,12 @@
 {
   "minimumDependencyAge": 0,
-  "lock": false
+  "env": {
+    "PORT": "8000"
+  },
+  "lock": {
+    "frozen": true
+  },
+  "tasks": {
+    "build": "vite build"
+  }
 }
