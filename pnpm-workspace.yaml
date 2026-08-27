@@ -2,3 +2,4 @@ allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
   - bini-deploy@1.0.18
+  - bini-ssg@1.0.4

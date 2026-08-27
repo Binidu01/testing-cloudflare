@@ -21,7 +21,7 @@
     "bini-router": "latest",
     "bini-overlay": "latest",
     "bini-server": "latest",
-    "bini-ssg": "latest"
+    "bini-ssg": "1.0.4"
   },
   "devDependencies": {
     "@vitejs/plugin-react": "latest",
