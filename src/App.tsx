@@ -133,6 +133,110 @@ function TitleSetter({ title }: { title: string }) {
 }
 
 
+// Built-in Bini Router 404 Page
+// Override by creating src/app/not-found.tsx
+function Default404() {
+  const [isDark, setIsDark] = React.useState(false);
+  
+  React.useEffect(() => {
+    const isDarkMode = document.documentElement.classList.contains('dark') ||
+      window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setIsDark(isDarkMode);
+    
+    const observer = new MutationObserver(() => {
+      setIsDark(document.documentElement.classList.contains('dark'));
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    
+    return () => observer.disconnect();
+  }, []);
+  
+  const styles = {
+    root: {
+      margin: 0,
+      padding: 0,
+      minHeight: '100vh',
+      width: '100%',
+    },
+    container: {
+      minHeight: '100vh',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'column' as const,
+      alignItems: 'center',
+      justifyContent: 'center',
+      textAlign: 'center' as const,
+      padding: '2rem',
+      backgroundColor: isDark ? '#000000' : '#ffffff',
+      fontFamily: 'system-ui, -apple-system, sans-serif',
+      margin: 0,
+    },
+    wrapper: {
+      maxWidth: '42rem',
+      margin: '0 auto',
+      display: 'flex',
+      flexDirection: 'column' as const,
+      gap: '1.5rem',
+    },
+    number: {
+      fontSize: '8rem',
+      fontWeight: 'bold',
+      lineHeight: 1,
+      letterSpacing: '-0.025em',
+      background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
+      WebkitBackgroundClip: 'text',
+      backgroundClip: 'text',
+      color: 'transparent',
+    },
+    title: {
+      fontSize: '1.5rem',
+      fontWeight: 600,
+      color: isDark ? '#ffffff' : '#000000',
+    },
+    message: {
+      color: isDark ? '#a3a3a3' : '#737373',
+      maxWidth: '28rem',
+      margin: '0 auto',
+    },
+    button: {
+      display: 'inline-block',
+      padding: '0.75rem 2rem',
+      borderRadius: '0.5rem',
+      background: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
+      color: 'white',
+      textDecoration: 'none',
+      fontSize: '0.875rem',
+      fontWeight: 500,
+      transition: 'opacity 0.2s',
+      cursor: 'pointer',
+      border: 'none',
+    }
+  };
+  
+  return (
+    <div style={styles.root}>
+      <div style={styles.container}>
+        <div style={styles.wrapper}>
+          <div style={styles.number}>404</div>
+          <h1 style={styles.title}>Page not found</h1>
+          <p style={styles.message}>
+            The page you're looking for doesn't exist or has been moved.
+          </p>
+          <div>
+            <a href="/" style={styles.button}>
+              ← Back to home
+            </a>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; padding: 0; }
+        a { text-decoration: none; }
+      `}</style>
+    </div>
+  );
+}
 
 export function AppRoutes() {
   return (
