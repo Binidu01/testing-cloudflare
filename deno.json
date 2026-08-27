@@ -1,9 +1,4 @@
 {
   "minimumDependencyAge": 0,
-  "lock": {
-    "frozen": true
-  },
-  "tasks": {
-    "build": "vite build"
-  }
+  "lock": false
 }
