@@ -21,11 +21,7 @@
         "./src/*"
       ]
     },
-    "forceConsistentCasingInFileNames": true,
-    "types": [
-      "vite/client",
-      "node"
-    ]
+    "forceConsistentCasingInFileNames": true
   },
   "include": [
     "src"
