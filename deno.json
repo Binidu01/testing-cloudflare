@@ -1,5 +1,3 @@
 {
-  "minimumDependencyAge": {
-    "exclude": ["bini-deploy"]
-  }
+  "minimumDependencyAge": 0
 }
