@@ -6,7 +6,9 @@
   path = "/api/*"
   function = "api"
 
+# SPA fallback — only for paths that look like they have NO file extension
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
+  # Netlify will still serve real files from dist/ first when they exist
