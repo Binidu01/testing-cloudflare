@@ -12,7 +12,7 @@ import {
 
 import Layout0 from './app/layout';
 
-const Page0 = lazyPage(() => import('./app/page'), () => import('virtual:bini-title:c3JjL2FwcC9wYWdlLnRzeA'));
+const Page0 = React.lazy(() => import('./app/page'));
 
 
 class ErrorBoundary extends React.Component<
@@ -254,18 +254,6 @@ function TitleSetter({ title, source }: { title?: string | null; source?: any })
 }
 
 
-function lazyPage(loadPage, loadTitle) {
-  const meta = { title: null, subs: new Set() };
-  const Comp = React.lazy(() =>
-    Promise.all([loadPage(), loadTitle().catch(() => ({ default: null }))]).then(([page, t]) => {
-      meta.title = (t && t.default) ?? null;
-      meta.subs.forEach((notify) => notify());
-      return page;
-    }),
-  );
-  Comp.__bini = meta;
-  return Comp;
-}
 
 
 function Default404() {
@@ -411,7 +399,7 @@ function RootShell() {
 export const routes = createRoutesFromElements(
   <Route element={<RootShell />} errorElement={<RouteError fallback={DefaultError} notFound={Default404} />}>
     <Route element={<Suspense fallback={<Spinner />}><Boundary><WithParams layout={Layout0}><Outlet /></WithParams></Boundary></Suspense>}>
-      <Route path="/" element={<Suspense fallback={<Spinner />}><Boundary><Page0 /><TitleSetter source={Page0} /></Boundary></Suspense>} />
+      <Route path="/" element={<Suspense fallback={<Spinner />}><Boundary><Page0 /><TitleSetter title={"Bini.js App"} /></Boundary></Suspense>} />
     </Route>
     <Route path="*" element={<Default404 />} />
   </Route>,

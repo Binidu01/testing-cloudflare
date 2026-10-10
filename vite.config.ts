@@ -71,9 +71,7 @@ export default defineConfig(({ command, mode, isSsrBuild }) => {
     },
 
     build: {
-      // The SSR pass (`vite build --ssr`) gets its own folder so it never mixes with or wipes the client build.
-      // Order matters: the client build runs first (it empties dist/), then the SSR pass fills dist/.bini.
-      outDir: isSsrBuild ? 'dist/.bini' : 'dist',
+      outDir: 'dist',
       sourcemap: isBuild,
       emptyOutDir: true,
       minify: isBuild,
