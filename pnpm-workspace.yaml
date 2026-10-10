@@ -1,5 +1,0 @@
-allowBuilds:
-  esbuild: true
-minimumReleaseAgeExclude:
-  - bini-deploy@1.0.19 || 1.0.20
-  - bini-overlay@2.1.1
